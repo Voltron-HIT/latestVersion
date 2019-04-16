@@ -1,0 +1,33 @@
+{% extends "list.html" %}
+                        {% block title %} Full Applicant List {% endblock %}
+                        <img src="../static/img/hitlogo1.png" alt=""> {% block heading %} <span>   Applicant List  </span>
+                        <button class="nav-bar btn" style="color: gold;" onclick="print()" target="_blank"><b>Print List</b></button></a> {% endblock %}
+                        {% block content %}
+                        <table border="1" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>contact details</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>National_id</th>
+      <th>academic qualifications</th>
+      <th>work experience</th>
+      <th>comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Lucy  Chikoore</td>
+      <td>0774885963 , 078954258 , hit</td>
+      <td>Male</td>
+      <td>22</td>
+      <td>34-4344323-h-12</td>
+      <td>1. 12 O level. 2. 3 alevel .</td>
+      <td>1. Worked at MAZ as HOD since 200-15.</td>
+      <td>CV &amp; Certificates attached</td>
+    </tr>
+  </tbody>
+</table>{% endblock %}

@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+}
+
+.nav-bar {
+    height: 65px;
+    background-color: #00135d;
+}
+
+.heading>span {
+    color: #00135d;
+    font-weight: 100;
+    text-align: center;
+    font-size: 32px;
+}
+
+.heading>img {
+    vertical-align: bottom;
+    height: 72px;
+    padding-top: 13px;
+    padding-left: 13px;
+}
+
+.material-icons.md-48 {
+    font-size: 62px;
+    color: #ffb400;
+}
+
+body {
+    font-family: 'Source Serif Pro', sans-serif;
+    font-size: 20px;
+}
+
+.wrapper {
+    padding: 10px 30px;
+    max-width: 1280px;
+    min-width: 320px;
+}
+
+.invalid-input {
+    border-color: #D32F2F !important;
+    background-color: #EF9A9A !important;
+}
+
+td.input {
+    width: 80%;
+}
+
+textarea,
+select,
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='file'] {
+    width: 85%;
+    padding: 12px;
+    margin-bottom: 5px;
+}
+
+textarea,
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='file'] {
+    border: 1px solid #00135d;
+    border-radius: 3px;
+}
+
+textarea:focus,
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='date']:focus,
+input[type='file']:focus {
+    border-color: #ffb400;
+    outline-color: #ffb400;
+}
+
+.detail-group>.details>.field>input[type='text'],
+.detail-group>.details>.field>input[type='file'] {
+    width: auto
+}
+
+.detail-group>h3 {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #00135d;
+    color: #ffb400;
+}
+
+form {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #00135d;
+}
+
+.detail-group {
+    padding: 0 0 10px 0;
+}
+
+.detail-group>.details {
+    padding: 20px;
+}
+
+.added {
+    border-top: 2px solid #ffb400;
+    padding-top: 5px;
+}
+
+.button {
+    padding: 5px;
+    text-transform: capitalize;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #ffb400;
+}
+
+.button:hover {
+    background-color: #ffb400;
+    cursor: pointer;
+}
+
+.field {
+    padding: 5px;
+    margin: 7px;
+}
+
+.submit-button {
+    padding: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: visible;
+    text-transform: capitalize;
+    text-align: left;
+    border-left-style: solid;
+    border-left-width: 5px;
+    border-left-color: #ffb400;
+    padding: 5px;
+    background-color: #f2f2f2;
+    margin-left: 5px;
+    position: absolute;
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        height: 32.5px;
+    }
+    .detail-group>.details>.field>input[type='text'],
+    .detail-group>.details>.field>input[type='file'] {
+        width: 100%
+    }
+    .heading>span {
+        text-align: center;
+        font-size: 20px;
+    }
+    textarea,
+    select,
+    input[type='text'],
+    input[type='email'],
+    input[type='date'],
+    input[type='file'] {
+        padding: 6px;
+        margin-bottom: 2px;
+    }
+    body {
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 14px;
+    }
+    .wrapper {
+        padding: 5px 15px;
+        max-width: 1280px;
+        min-width: 320px;
+    }
+    td {
+        width: 50%
+    }
+    .heading>img {
+        vertical-align: middle;
+        height: 64px;
+        padding-top: 13px;
+        padding-left: 13px;
+    }
+    .material-icons.md-48 {
+        font-size: 32px;
+    }
+}

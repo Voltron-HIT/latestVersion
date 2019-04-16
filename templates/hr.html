@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Human Resources Home</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <h1><b>HIT</b></h1>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('humanResourceHome')}}"><b>HOME</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('addVacancy')}}"><b>ADD VACANCY</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}"><b>LOGOUT</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav><br>
+
+    <div class="container">
+        <div class="text-center">
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="list-unstyled text-uppercase">
+                {% for message in messages %}
+                <li>
+                    <h4>{{ message }}</h4>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <ul class="list-unstyled text-uppercase">
+                    <li>
+                        <a href="#">
+                            <h3>Finance</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Maintenance</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Catering</h3>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-8 col-sm-8 col-xs-8">
+
+                <div class="row">
+                    {% for p in post %}
+
+                    <div class="col-md-6 col-sm-6 col-xs-6 mb-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-uppercase">{{p[0]}}</h5><br>
+                                <small>{{p[8]}}</small>
+                                <ul class="list-unstyled ml-auto">
+                                    <a href="#" class="card-link" data-toggle="modal" data-target="#{{p[0]}}">Read More</a> |
+                                    <li><a href="{{p[6]}}" class="card-link">Edit</a> | </li>
+                                    <li><a href="{{p[5]}}" class="card-link">Shortlist</a> | </li>
+                                    <li><a href="{{p[7]}}" class="card-link">View Applicants</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% for p in post %}
+                    <div class="modal fade" id="{{p[0]}}" tabindex="-1" role="dialog" aria-labelledby="fullPostModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="fullPostModalLabel">{{p[0]}}</h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 class="modal-title">Minimum Requirements</h4>
+                                    <div class="col-12">
+                                        <p class="card-text">
+                                            {% for min in p[1] %}
+                                            <ul>
+                                                <li>{{ min }}</li>
+                                            </ul>
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                    <h4 class="modal-title">Responsibilities</h4>
+                                    <div class="col-12">
+                                        <p class="card-text">
+                                            {% for resp in p[2] %}
+                                            <ul>
+                                                <li>{{ resp }}</li>
+                                            </ul>
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="../static/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

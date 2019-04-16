@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Blessed T Mahuni">
+    <title>HIT Vacancy</title>
+    <link rel="stylesheet" href="../static/css/simple-sidebar.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        :root {
+            --hit-blue-light: #304fce;
+            --hit-yellow-light: #e6b84d;
+            --hit-blue: #00135d;
+            --hit-yellow: #ffb400;
+        }
+
+        :root{
+            --light-blue: #00135d;
+        }
+
+        .font {
+            font-family: 'Markazi Text', serif;
+            font-size: 32px;
+        }
+
+        .logo-height {
+            height: 32px;
+        }
+
+        .top-border-color {
+            border-top-color: var(--hit-blue);
+            border-top-width: 4px;
+            border-top-style: solid;
+        }
+
+        .bottom-border-color {
+            border-bottom-color: var(--hit-yellow);
+            border-bottom-width: 2px;
+            border-bottom-style: solid;
+        }
+
+        .fore-color {
+            color: var(--hit-blue);
+        }
+
+        .navbar-toggler-icon {
+            color: var(--hit-blue);
+        }
+
+        .nav-item {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--hit-blue);
+        }
+
+        .badge-color {
+            background-color: var(--hit-yellow);
+            color: var(--hit-blue);
+        }
+
+        .thing {
+            background-color: var(--hit-yellow);
+            color: var(--hit-blue) !important;
+        }
+
+
+        a.thing:hover {
+            cursor: pointer;
+            background-color: var(--hit-yellow-light);
+        }
+
+        .card {
+            margin-top: 12px;
+            border-color: var(--hit-blue);
+            /* height: 229px !important; */
+        }
+
+        .card-header {
+            background-color: var(--light-blue);
+            color: var(--hit-yellow);
+        }
+
+        .btn-color-dark{
+            background-color: var(--hit-blue);
+            color: var(--hit-yellow);
+        }
+
+         .btn-color-dark:link{
+            text-decoration: none;
+            background-color: var(--hit-blue);
+            color: var(--hit-yellow);
+        }
+
+        button.btn-color-dark{
+            text-align: left;
+        }
+
+        button.btn-color-dark:hover{
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-header {
+            border-color: var(--hit-blue)
+        }
+
+        .btn-color {
+            border-color: var(--hit-yellow);
+            color: var(--hit-yellow);
+        }
+
+        .material-icons{
+            font-size: 48px !important;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light top-border-color bottom-border-color fore-color nav-justified">
+        <span class="navbar-brand">
+            <img class="logo-height" src="../static/img/hitlogo1.png" alt="">
+        </span>
+
+
+        <div class="navbar-nav ml-auto" id="thing">
+            <i class="material-icons md-48">menu</i>
+        </div>
+
+    </nav>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-primary">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <span>Available Vacancies</span>
+                </li>
+                <li>
+                    <a class="thing">How To Apply
+                        <span class="badge badge-color "></span>
+                    </a>
+                </li>
+                {% for i, j in zip(depts, totals) %}
+                <li>
+                    <form style="text-align: left" action="{{url_for('home')}}" method=POST>
+                        <button class="item btn btn-block btn-color-dark" name="department" value="{{i}}" type="submit">{{i}}
+                        <span class="badge badge-pill badge-color">{{j}}</span>
+                    </button>
+
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid row">
+
+                    {% for p in post %}
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>{{p[0]}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{p[4]}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline btn-color-dark" data-toggle="modal" data-target="#{{p[0]}}" >View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+            </div>
+            <!-- Modal -->
+            {% for p in post %}
+            <div class="modal fade" id="{{p[0]}}" tabindex="-1" role="dialog" aria-labelledby="fullPostModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="fullPostModalLabel">{{p[0]}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <h5 class="modal-title">Minimum Requirements</h5>
+                                <p>
+                                    {% for min in p[1] %}
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"> {{ min }} </li>
+                                    </ul>
+                                    {% endfor %}
+                                </p>
+                                <h5 class="modal-title">Responsibilities</h5>
+                                <p>
+                                    {% for resp in p[2] %}
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"> {{ resp }} </li>
+                                    </ul>
+                                    {% endfor %}
+                                </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-color-dark" data-dismiss="modal">Close</button>
+                            <a href="{{p[3]}}" class="btn btn-color-dark">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script>
+        var th = $(window).width()
+        if (th < 728){
+            $("#wrapper").toggleClass("toggled");
+        }
+
+        $("#thing").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+
+        });
+    </script>
+</body>
+</html>

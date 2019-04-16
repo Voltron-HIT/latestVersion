@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="../static/applicationstyle.css">
+    <link rel="stylesheet" href="../static/addvacancystyle.css">
+    <link rel="shortcut icon" href="..\static\favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Add Vacancy</title>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <span> <a href="{{url_for('humanResourceHome')}}"> <i class="material-icons md-48">arrow_back</i> </a> </span>
+    </div>
+
+    <div class="heading">
+        <img src="../static/img/hitlogo1.png" alt="">
+        <span> Add Vacancy </span>
+    </div>
+
+    <div class="wrapper">
+        <form action="{{url_for('addVacancy')}}" method=POST>
+            <div class="detail-group">
+                <h3>Vacancy Details</h3>
+                <div class="details">
+                    <table>
+                        <tr>
+                            <td> <label for="post">Post: </label> </td>
+                            <td> <input type="text" name="post" id="" placeholder="Lecturer" required> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for="post description">Post Description: </label> </td>
+                            <td> <input type="text" name="post description" id="" placeholder="To supervise or assist with supervision of undergraduate, taught graduate (Masters)" required> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for="department">Department: </label> </td>
+                            <td>
+                                <select name="department" id="">
+                                        <option value="Software Engineering">Software Engineering</option>
+                                        <option value="Finance Department">Finance Department</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        
+                                    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top"> Minimum Requirements: </td>
+                            <td> <textarea name="requirement" id="" cols="100" rows="10"></textarea> </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top"> Responsibilities: </td>
+                            <td> <textarea name="responsibilities" id="" cols="100" rows="10"></textarea> </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="detail-group">
+                <h3>Vacancy Dates</h3>
+                <div class="details">
+                    <table id='specialdates'>
+                        <tr>
+                            <td> <label for="deadline">Proposed Deadline: </label> </td>
+                            <td> <input type="date" name="deadline" id="" required> </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="button submit-button" type="submit"> Post vacancy </button>
+        </form>
+
+        </div>
+</body>
+
+<script>
+    // function to add dynamically add fields to adjudicators
+    function addAdjudicatorField() {
+        var numberOfAdjudicator = document.getElementById('numberOfAdjudicator')
+        numberOfAdjudicator.value = Number(numberOfAdjudicator.value) + 1
+        var button = document.getElementById('add')
+        var adjudicator = document.getElementById('adjudicator')
+        var fieldNumbers = adjudicator.childElementCount - 1;
+        var cloneElement = adjudicator.firstElementChild.cloneNode(true)
+
+        cloneElement.id = "afield" + fieldNumbers
+        cloneElement.childNodes[1].childNodes[0].childNodes[3].childNodes[1].value = ""
+        cloneElement.childNodes[1].childNodes[2].childNodes[3].childNodes[1].value = ""
+        cloneElement.childNodes[1].childNodes[4].childNodes[3].childNodes[1].value = ""
+        cloneElement.childNodes[1].childNodes[6].childNodes[3].childNodes[1].value = ""
+        cloneElement.childNodes[1].childNodes[0].childNodes[3].childNodes[1].name = "name" + fieldNumbers
+        cloneElement.childNodes[1].childNodes[2].childNodes[3].childNodes[1].name = "email" + fieldNumbers
+        cloneElement.childNodes[1].childNodes[4].childNodes[3].childNodes[1].name = "adjudicatorpost" + fieldNumbers
+        cloneElement.childNodes[1].childNodes[6].childNodes[3].childNodes[1].name = "adjudicatordepartment" + fieldNumbers
+        adjudicator.insertBefore(cloneElement, button)
+    }
+
+    function removeAdjudicatorField() {
+        try {
+            var numberOfAdjudicator = document.getElementById('numberOfAdjudicator')
+            numberOfAdjudicator.value = Number(numberOfAdjudicator.value) - 1
+            var adjudicator = document.getElementById('adjudicator')
+            var fieldNumbers = adjudicator.childElementCount - 2
+            var childName = 'afield' + fieldNumbers
+            var child = document.getElementById(childName)
+            adjudicator.removeChild(child)
+        } catch (e) {
+            alert('There Must Be At Least One Field')
+        }
+    }
+</script>
+
+
+</html>

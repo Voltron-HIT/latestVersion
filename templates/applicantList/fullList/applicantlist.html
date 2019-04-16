@@ -1,0 +1,43 @@
+{% extends "list.html" %}
+                        {% block title %} Full Applicant List {% endblock %}
+                        {% block heading %} Applicant List {% endblock %}
+                        {% block content %}
+                        <table border="1" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>contact details</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>National_id</th>
+      <th>academic qualifications</th>
+      <th>work experience</th>
+      <th>comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Theophilus Okoye</td>
+      <td>0783620957 , 0783620956 , Flat 1 53 Magamba Way</td>
+      <td>Male</td>
+      <td>20</td>
+      <td>70-299026-J-70</td>
+      <td>1. 9 O' Levels. 2. 3 A' Levels including Maths.</td>
+      <td>1. Worked at HIT as Programmer since 2017 - Present.</td>
+      <td>CV &amp; Certificates attached</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>abc abc</td>
+      <td>0783620957 , 263786564345 , Flat 1 53 Magamba Way</td>
+      <td>Male</td>
+      <td>18</td>
+      <td>22-2323465X-12</td>
+      <td>1. 9 O' Levels.</td>
+      <td>1. Worked at HIT as Programmer since   2016 - Present.</td>
+      <td>CV &amp; Certificates attached</td>
+    </tr>
+  </tbody>
+</table>{% endblock %}

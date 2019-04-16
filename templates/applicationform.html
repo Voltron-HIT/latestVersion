@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HIT Application</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="../static/applicationstyle.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar nav-bar" style>
+        <span> <a href="{{url_for('home')}}"> <i class="material-icons md-48">arrow_back</i> </a> </span>
+    </nav>
+
+    <center class="heading">
+        <img src="../static/img/hitlogo1.png" alt="">
+        <span> Harare Institute Of Technology Job Application Form </span>
+    </center>
+
+    <div class="container col-md-12 col-lg-12 col-sm-12 wrapper">
+        <form action="{{url_for('apply')}}" method=POST id="applicationForm" enctype="multipart/form-data">
+            <div class="detail-group">
+                <h3>Personal Information</h3>
+                <div class="details">
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="firstname">Firstname: </label>
+                            <input class="form-control" name="firstname" id="firstname" type="text" required placeholder="John">
+                            <div class="invalid-tooltip">
+                                Input Firstname
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="surname">Surname: </label>
+                            <input class="form-control" name="surname" id="surname" type="text" required placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label for="nationalid">National ID: </label>
+                            <input class="form-control" name="nationalid" type="text" id="nationalid" required placeholder="22-345345X234-P">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="DOB">Date Of Birth:</label>
+                            <input class="form-control" name="DOB" id="dob" type="date" required data-toggle="popover" data-placement="top" data-content="Please Input A Valid Date Of Birth">
+                        </div>
+                        <div class="form-group col-md-2 col-sm-4">
+                            <label for="Sex">Sex:</label>
+                            <select class="form-control" name="sex" id="sex">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-group">
+                <h3>Contact Information</h3>
+                <div class="details">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="email">Email: </label>
+                            <input class="form-control" type="email" name="email" id="email" required placeholder="John@gmail.com" data-toggle="popover" data-placement="top" data-content="Please Input A Valid Email Address">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="phone1">Phone 1: </label>
+                            <input class="form-control" type="text" name="phone1" id="phone1" required placeholder="0772334661">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="phone2">Phone 2: </label>
+                            <input class="form-control" type="text" name="phone2" id="phone2" placeholder="0772334661">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label for="address">Address:</label>
+                            <input class="form-control" type="text" name="address" id="" placeholder="46 Hughes Harare">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-group">
+                <h3>Academic Qualification</h3>
+                <div class="details" id="qualification">
+                    <div class="field" id="qfield">
+                        <label for="qualification">Qualification: </label>
+                        <input style="padding: 10px" required name="qualification1" type="text" id="qualification1" placeholder="5 O levels including English and Maths">
+                        <label for="awardingInstitute">Awarding Institute: </label>
+                        <input style="padding: 10px" required name="awardingInstitute1" id="awardingInstitute1" type="text" placeholder="ZIMSEC">
+                        <input type="text" name="numberOfQualifications" value="1" id="numberOfQualifications" style="display:None">
+                    </div>
+                    <span class="button" id="addqualification" onclick="addQualificationField()">Add Another</span>
+                    <span class="button" id="removequalification" onclick="removeQualificationField()">Remove</span>
+                </div>
+            </div>
+            <div class="detail-group">
+                <h3>Work Experience</h3>
+                <div class="details" id="workexperience">
+                    <div class="field" id="wfield">
+                        <label for="organisation">Organisation: </label>
+                        <input style="padding: 10px" name="organisation1" id="organisation1" type="text" value="{{ request.form.organisation }}" placeholder="Harare Institute Of Technology">
+                        <label for="position">Position: </label>
+                        <input style="padding: 10px" name="position1" id="position1" type="text" value="{{ request.form.position }}" placeholder="Receptionist">
+                        <label for="timeframe">Period: </label>
+                        <input style="padding: 10px" name="timeframe1" id="timeframe1" type="text" value="{{ request.form.timeframe }}" placeholder="2000-2002">
+                        <input type="text" style="display:None" name="numberOfWorkExperiences" value="1" id="numberOfWorkExperiences">
+                    </div>
+
+                    <span class="button" id="add" onclick="addWorkExperienceField()">Add Another</span>
+                    <span class="button" id="removeWorkExperienceField" onclick="removeWorkExperienceField()">Remove</span>
+                </div>
+            </div>
+            <div class="detail-group">
+                <h3>Curriculum Vitae</h3>
+                <div class="details">
+                    <label for="cv">( Attach Curriculum Vitae With All Necessary Certificates )</label>
+                    <input class="form-control-file" type="file" name="cv" id="cv" required data-toggle="popover" data-placement="top" data-content="Please Attach A pdf or word document with for CV">
+
+                </div>
+            </div>
+
+            <button class="button submit-button" type="submit">Apply</button>
+
+        </form>
+    </div>
+
+    <!--  Response Message Modal -->
+    <div class="modal" id="response" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Success!!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p>Your Application Was Successful A Conformation Email Will Be Sent To You Shortly </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{url_for('home')}}" class="btn btn-primary">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="../static/js/addRemove.js"></script>
+<script src="../static/js/validation.js"></script>
+<script src="../static/js/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+
+<script>
+    let applicationForm = document.getElementById('applicationForm')
+    applicationForm.addEventListener('submit', sendApplication)
+        // code for modal
+    var modal = document.getElementById('messageModal');
+    var span = document.getElementsByClassName("close")[0];
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // ends here
+
+    let dob = document.getElementById('dob')
+    let cv = document.getElementById('cv')
+    let email = document.getElementById('email')
+
+    function sendApplication(event) {
+        event.preventDefault()
+        if (validateDOB(dob.value) && validateFile(cv.value) && validateEmail(email.value)) {
+
+            let data = new FormData(applicationForm)
+
+            axios.post("{{url_for('apply')}}", data).then(function(response) {
+                if (response.status === 200) {
+                    $('response').modal('show')
+                }
+            })
+            applicationForm.reset()
+            $('#response').modal('show')
+
+
+        } else if (validateFile(cv.value) === false && validateDOB(dob.value) && validateEmail(email.value)) {
+            $('#cv').addClass('invalid-input')
+            $('#cv').popover('show')
+
+        } else if (validateDOB(dob.value) === false && validateFile(cv.value) && validateEmail(email.value)) {
+            // display message to user and scroll to top for dob
+            $('#dob').popover("show")
+            $('#dob').addClass('invalid-input')
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+
+        } else if (validateDOB(dob.value) && validateFile(cv.value) && validateEmail(email.value) === false) {
+            $('#email').popover('show')
+            $('#email').addClass('invalid-input')
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+
+        } else if (validateDOB(dob.value) === false && validateFile(cv.value) === false && validateEmail(email.value) === false) {
+
+            $('#email').popover('show')
+            $('#email').addClass('invalid-input')
+            $('#cv').addClass('invalid-input')
+            $('#cv').popover('show')
+            $('#dob').popover("show")
+            $('#dob').addClass('invalid-input')
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+
+        }
+
+        dob.addEventListener('focus', dobreset)
+        cv.addEventListener('focus', cvreset)
+        email.addEventListener('focus', emailreset)
+
+        function emailreset() {
+            email.className = 'form-control'
+        }
+
+        function dobreset() {
+            dob.className = 'form-control'
+
+        }
+
+        function cvreset() {
+            cv.className = 'form-control-file'
+        }
+
+
+    }
+</script>
+
+</html>

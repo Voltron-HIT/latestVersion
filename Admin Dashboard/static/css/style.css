@@ -1,0 +1,55 @@
+body{
+    font-family: 'Source Serif Pro', sans-serif;
+}
+.navbar{
+	background-color: #00135d;
+	margin-bottom:0;
+    border-radius:0;
+}
+.navbar button{
+	background-color: #ffb400;
+}
+.navbar h1, .navbar a{
+	color: #ffb400;
+}
+.collapse{
+	position: relative;
+}
+h3, .modal-body .modal-title{
+	color: #00135d;
+}
+.row .card{
+	border: 4px solid;
+	border-color: #00135d;
+}
+.row .card:hover{
+	box-shadow: 3px 5px #ffb400;
+}
+.footer{
+	background-color: linear-gradient(to right, #00135d, #ffb400);
+}
+.modal .card{
+	border: 3px;
+	border-color: #00135d;
+}
+th{
+	background-color: #00135d;
+	color: #ffb400;
+}
+.btn{
+	width: 60%;
+	background-color: #00135d;
+	color: #ffb400;
+}
+.modal-header{
+	background-color: #00135d;
+	color: #ffb400;
+}
+.modal-header button span{
+	color: #ffb400;
+	font-size: 45px;
+}
+.container, .col-md-4 .text-center{
+	margin-top: 0px;
+	margin-left: 15%;
+}

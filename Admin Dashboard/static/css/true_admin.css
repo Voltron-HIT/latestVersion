@@ -1,0 +1,40 @@
+body{
+    font-family: 'Source Serif Pro', sans-serif;
+}
+.navbar{
+	background-color: #00135d;
+	margin-bottom:0;
+    border-radius:0;
+}
+.navbar button{
+	background-color: #ffb400;
+}
+.navbar h1, .navbar a{
+	color: #ffb400;
+}
+.collapse{
+	position: relative;
+}
+h3, .modal-body .modal-title{
+	color: #00135d;
+}
+th{
+	background-color: #00135d;
+	color: #ffb400;
+}
+.btn{
+	width: 60%;
+	background-color: #00135d;
+	color: #ffb400;
+}
+.modal-header{
+	background-color: #00135d;
+	color: #ffb400;
+}
+.modal-header button span{
+	color: #ffb400;
+	font-size: 45px;
+}
+.list-group-item{
+	color: #00135d;
+}

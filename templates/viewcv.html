@@ -1,0 +1,17 @@
+{% extends "list.html" %} {% block title %} View CVs for Applicants {% endblock %} {% block heading %} View CVs for Applicants {% endblock %} {% block content %}
+<table class="table3000">
+    <thead>
+        <td class="first-col" colspan="1">Applicant</td>
+        <td class="last-col" colspan="2">National ID</td>
+    </thead>
+
+    {% for i, j, k in zip(names, ids, cvs) %}
+    <tr>
+        <td>{{i}}</td>
+        <td>{{j}}</td>
+        <td><a href="{{k}}">View CV for {{i}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

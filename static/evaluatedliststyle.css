@@ -1,0 +1,33 @@
+table{
+  /* width: 1000px!important; */
+}
+thead{
+    text-align: left;
+    background-color: #00135d;
+    color: #ffb400;
+    padding: 10px;
+    /* width: 300px;; */
+}
+
+thead > tr{
+    text-align: left !important;
+    text-transform: capitalize;
+}
+
+tbody > tr{
+    height: 200px;
+}
+
+td {
+    width: auto;
+    border: 1px solid #00135d;
+    padding: 10px;
+}
+
+.material-icons.md-24{
+    color: #ffb400;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
